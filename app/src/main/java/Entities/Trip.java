@@ -8,10 +8,12 @@ public class Trip {
     protected String destination;
     protected String risk_assessment;
     protected String description;
+    protected String totalExpense;
 
-    public int getTrip_id() {
-        return trip_id;
-    }
+    public String getTotalExpense(){return totalExpense;}
+    public void setTotalExpense(String totalExpense){this.totalExpense = totalExpense;}
+
+    public int getTrip_id() {return trip_id;}
 
     public void setTrip_id(int trip_id) {
         this.trip_id = trip_id;
@@ -45,9 +47,7 @@ public class Trip {
         return risk_assessment;
     }
 
-    public void setRisk_assessment(String risk_assessment) {
-        this.risk_assessment = risk_assessment;
-    }
+    public void setRisk_assessment(String risk_assessment) {this.risk_assessment = risk_assessment;}
 
     public String getDescription() {
         return description;

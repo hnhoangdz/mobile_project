@@ -5,17 +5,19 @@
       <map>
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/add_expense.xml" value="0.2857142857142857" />
+        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/add_trip.xml" value="0.264" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/all_expenses.xml" value="0.2" />
-        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/all_trips.xml" value="0.22521367521367522" />
+        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/all_trips.xml" value="0.1728395061728395" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/drop_down_items.xml" value="0.1" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/expense_detail.xml" value="0.1" />
-        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/list_expenses.xml" value="0.16794871794871793" />
+        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/list_expenses.xml" value="0.264" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/list_items.xml" value="0.264" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/list_trip.xml" value="0.27447916666666666" />
-        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/list_trips.xml" value="0.16794871794871793" />
+        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/list_trips.xml" value="0.264" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/risk_assessment.xml" value="0.14453125" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/search_trips.xml" value="0.22435897435897437" />
-        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/trip_detail.xml" value="0.264" />
+        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/translation.xml" value="0.2" />
+        <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/trip_detail.xml" value="0.3828571428571429" />
         <entry key="..\:/Mobile/Coursework/project/app/src/main/res/layout/trip_details.xml" value="0.27447916666666666" />
       </map>
     </option>

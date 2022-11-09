@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,18 +17,23 @@ import Entities.Trip;
 
 public class AllTrips extends AppCompatActivity {
 
-    private static boolean isSearched = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_trips);
 
         DatabaseHelper tripDbHelper = new DatabaseHelper(this);
+
+        ImageButton btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(view -> {
+            Intent intent_home = new Intent(AllTrips.this, MainActivity.class);
+            startActivity(intent_home);
+        });
+
         SearchView searchView = findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                isSearched = true;
                 ArrayList<Trip> arrayTrips = tripDbHelper.searchByTripName(s);
                 TripListAdapter listTripAdapter = new TripListAdapter(AllTrips.this, arrayTrips);
                 ListView listViewTrips = findViewById(R.id.listViewTrip);
@@ -51,7 +58,6 @@ public class AllTrips extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                isSearched = true;
                 ArrayList<Trip> arrayTrips = tripDbHelper.searchByTripName(s);
                 TripListAdapter listTripAdapter = new TripListAdapter(AllTrips.this, arrayTrips);
                 ListView listViewTrips = findViewById(R.id.listViewTrip);
@@ -75,8 +81,6 @@ public class AllTrips extends AppCompatActivity {
             }
         });
 
-
-//            Toast.makeText(AllTrips.this, '3', Toast.LENGTH_LONG).show();
         ArrayList<Trip> arrayTrips = tripDbHelper.getAllTrips();
         TripListAdapter listTripAdapter = new TripListAdapter(AllTrips.this, arrayTrips);
         ListView listViewTrips = findViewById(R.id.listViewTrip);
@@ -93,9 +97,9 @@ public class AllTrips extends AppCompatActivity {
                 intent.putExtra("tripName", selectedTrip.getTrip_name());
                 intent.putExtra("tripRisk", selectedTrip.getRisk_assessment());
                 intent.putExtra("tripDesc", selectedTrip.getDescription());
+                intent.putExtra("tripExpense", selectedTrip.getTotalExpense());
                 startActivity(intent);
             }
         });
-
     }
 }

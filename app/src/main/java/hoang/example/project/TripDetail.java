@@ -1,5 +1,6 @@
 package hoang.example.project;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class TripDetail extends AppCompatActivity {
@@ -20,6 +22,11 @@ public class TripDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
         int tripID = intent.getIntExtra("tripID", 0);
+        ImageButton btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(view -> {
+            Intent intent_home = new Intent(TripDetail.this, MainActivity.class);
+            startActivity(intent_home);
+        });
         String tripDestination = intent.getStringExtra("tripDestination");
         String tripDate = intent.getStringExtra("tripDate");
         String tripName = intent.getStringExtra("tripName");
@@ -49,11 +56,31 @@ public class TripDetail extends AppCompatActivity {
         // Delete a trip
         ImageButton btnDelete = findViewById(R.id.btnDeleteTrip);
         btnDelete.setOnClickListener(view -> {
-            DatabaseHelper tripDbHelper = new DatabaseHelper(getApplicationContext());
-            tripDbHelper.deleteTrip(tripID);
-            Toast.makeText(getApplicationContext(), "Delete " + String.valueOf(tripID) + " successfully!", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(TripDetail.this, AllTrips.class);
-            startActivity(i);
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Delete entry");
+            alert.setMessage("Are you sure you want to delete?");
+            alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    DatabaseHelper tripDbHelper = new DatabaseHelper(getApplicationContext());
+                    tripDbHelper.deleteTrip(tripID);
+                    Toast.makeText(getApplicationContext(), "Delete " + String.valueOf(tripID) + " successfully!", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(TripDetail.this, AllTrips.class);
+                    startActivity(i);
+                }
+            });
+            alert.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    // close dialog
+                    dialog.cancel();
+                }
+            });
+            alert.show();
+//            DatabaseHelper tripDbHelper = new DatabaseHelper(getApplicationContext());
+//            tripDbHelper.deleteTrip(tripID);
+//            Toast.makeText(getApplicationContext(), "Delete " + String.valueOf(tripID) + " successfully!", Toast.LENGTH_LONG).show();
+//            Intent i = new Intent(TripDetail.this, AllTrips.class);
+//            startActivity(i);
         });
 
         // Update trip

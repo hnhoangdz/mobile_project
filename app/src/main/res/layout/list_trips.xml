@@ -19,8 +19,8 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/hoguom"/>
-            
+                android:src="@drawable/hoguom" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,14 +34,14 @@
                     android:text="Hanoi"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tripName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Conference"/>
+                    android:text="Conference" />
 
             </LinearLayout>
 
@@ -51,9 +51,20 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
             android:layout_alignParentRight="true"
-            android:text="09/07/2001"/>
+            android:layout_marginRight="20dp"
+            android:padding="15dp"
+            android:text="09/07/2001" />
+
+        <TextView
+            android:id="@+id/totalExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="21dp"
+            android:padding="15dp"
+            android:text="Total expense: 15$" />
 
     </RelativeLayout>
 </LinearLayout>

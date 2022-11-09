@@ -33,10 +33,12 @@ public class TripListAdapter extends ArrayAdapter<Trip> {
         TextView destination = convertView.findViewById(R.id.destination);
         TextView tripName = convertView.findViewById(R.id.tripName);
         TextView date = convertView.findViewById(R.id.date);
+        TextView total_expense = convertView.findViewById(R.id.totalExpense);
 
         destination.setText(trip.getDestination());
         tripName.setText(trip.getTrip_name());
         date.setText(trip.getDate());
+        total_expense.setText(trip.getTotalExpense());
 
         return convertView;
     }

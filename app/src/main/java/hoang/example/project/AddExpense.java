@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,11 @@ public class AddExpense extends AppCompatActivity {
 
         Intent intent = getIntent();
         int tripID = intent.getIntExtra("tripID", 0);
-
+        ImageButton btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(view -> {
+            Intent intent_home = new Intent(AddExpense.this, MainActivity.class);
+            startActivity(intent_home);
+        });
         // Process expense_name
         String[] expense_names = getResources().getStringArray(R.array.expense_name);
         AutoCompleteTextView autoCompleteTextViewExpense = findViewById(R.id.txtExpenseName);

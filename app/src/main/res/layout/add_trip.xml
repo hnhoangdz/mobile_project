@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllExpenses">
+    tools:context=".AddTrip">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout1"
@@ -17,19 +17,19 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:background="#00FFFFFF"
-        android:hint="Amount"
+        android:hint="Destination"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/btnViewAll">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtAmount"
+            android:id="@+id/txtDestination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
             android:inputType="text"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -41,22 +41,19 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
-        android:hint="Time"
+        android:hint="Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtTime"
+            android:id="@+id/txtDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:focusableInTouchMode="true"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            android:inputType="textPersonName"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -67,18 +64,40 @@
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="@string/expense_name"
+        android:hint="@string/trip_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewAllExpenses">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <AutoCompleteTextView
-            android:id="@+id/txtExpenseName"
+            android:id="@+id/txtTrip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:inputType="none"/>
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/risk_assessment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+        <AutoCompleteTextView
+            android:id="@+id/txtRiskAssessment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -90,23 +109,24 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
-        android:hint="Comment"
+        android:hint="Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtComment"
+            android:id="@+id/txtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:background="@null"
             android:inputType="text"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnSaveExpense"
+        android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="307dp"
@@ -117,35 +137,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"/>
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
     <Button
-        android:id="@+id/btnViewAllExpenses"
-        android:layout_width="135dp"
-        android:layout_height="44dp"
+        android:id="@+id/btnViewAll"
+        android:layout_width="124dp"
+        android:layout_height="51dp"
         android:layout_marginStart="291dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="20dp"
-        android:text="All expenses"
+        android:text="View all"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btnHome"
-        android:layout_width="44dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="45dp"
+        android:layout_height="41dp"
         android:background="@color/white"
         android:largeHeap="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
-        app:layout_constraintEnd_toStartOf="@+id/btnViewAllExpenses"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout1"
+        app:layout_constraintEnd_toStartOf="@+id/btnViewAll"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768"
+        app:layout_constraintVertical_bias="0.764"
         app:srcCompat="@drawable/home" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

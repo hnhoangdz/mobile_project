@@ -104,11 +104,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Get all trips
     public ArrayList<Trip> getAllTrips() {
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_TRIP, null);
-//        Cursor cursor = database.query(TABLE_TRIP, new String[] {TRIP_ID, DESTINATION, DATE, TRIP_NAME, RISK_ASSESSMENT, DESCRIPTION},
-//                null, null, null, null, "trip_id");
 
         ArrayList<Trip> results = new ArrayList<>();
-
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             int trip_id = cursor.getInt(0);
@@ -117,6 +114,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String trip_name = cursor.getString(3);
             String risk_assessment = cursor.getString(4);
             String description = cursor.getString(5);
+            String totalExpense = sumExpenseByTrip(trip_id);
+            if(totalExpense == "0"){
+                totalExpense = "Total: 0$";
+            }else{
+                totalExpense = "Total: " + totalExpense + "$";
+            }
 
             Trip trip = new Trip();
             trip.setTrip_id(trip_id);
@@ -125,10 +128,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             trip.setTrip_name(trip_name);
             trip.setRisk_assessment(risk_assessment);
             trip.setDescription(description);
+            trip.setTotalExpense(totalExpense);
 
             results.add(trip);
-
-
+            cursor.moveToNext();
         }
         return results;
     }
@@ -164,10 +167,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return results;
     }
 
+    // Sum expense by id
+    public String sumExpenseByTrip(int tripID){
+        String my_query = "SELECT b.expense_id, b.trip_id, b.expense_name, b.amount, b.time, b.comment FROM " + TABLE_TRIP + " a INNER JOIN " +
+                TABLE_EXPENSE + " b ON a.trip_id = b.trip_id WHERE a.trip_id=?";
+        Cursor cursor = database.rawQuery(my_query,new String[]{String.valueOf(tripID)});
+        float sum = 0;
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+            String amount = cursor.getString(3);
+            sum += Float.parseFloat(amount);
+            cursor.moveToNext();
+        }
+        return String.valueOf(sum);
+    }
+
     // Delete Trip and reference to expense
     public void deleteTrip(int trip_id){
         database.delete(TABLE_TRIP, "trip_id=?", new String[]{String.valueOf(trip_id)});
-        database.delete(TABLE_EXPENSE, "trip_id?", new String[]{String.valueOf(trip_id)});
+        database.delete(TABLE_EXPENSE, "trip_id=?", new String[]{String.valueOf(trip_id)});
     }
 
     // Update trip (only date and description)

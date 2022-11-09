@@ -36,7 +36,7 @@ public class ExpenseListAdapter extends ArrayAdapter<Expense> {
 
         food.setText(expense.getExpense_name());
         comment.setText(expense.getComment());
-        amount.setText(expense.getAmount());
+        amount.setText("Total: " + expense.getAmount());
         date_expense.setText(expense.getTime());
 
         return convertView;
